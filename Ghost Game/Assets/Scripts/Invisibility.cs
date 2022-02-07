@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Invisibility : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class Invisibility : MonoBehaviour
         timerInvisText.text = timerInvis.ToString("F1");
         textInvisCount.text = invisTimes.ToString();
 
-        Invisible();
+        if(SceneManager.GetActiveScene().buildIndex != 1)
+            Invisible();
         
     }
 
