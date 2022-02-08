@@ -15,6 +15,8 @@ public class TeachingLevels : MonoBehaviour
     private void Start()
     {
         endTyping = true;
+        FindObjectOfType<GameManager>().isDialog = true;
+
     }
     void Update()
     {

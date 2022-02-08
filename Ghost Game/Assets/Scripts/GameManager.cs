@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         canvasPause.SetActive(false);
         Time.timeScale = 1;
 
-        isDialog = true;
         hasKey = false;
         inRangeOfDoor = false;
         EnemyAI.OnEnemyHasSpottedPlayer += ShowGameLoseUI;
@@ -34,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!paused && Input.GetKeyDown(KeyCode.Escape))
+        if (!paused && Input.GetKeyDown(KeyCode.Escape) && !gameIsOver)
         {
             PauseButton();
             canvasPause.SetActive(true);
