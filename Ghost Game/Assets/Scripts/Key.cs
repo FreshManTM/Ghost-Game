@@ -13,7 +13,6 @@ public class Key : MonoBehaviour
     private void Start()
     {
             keyImage.gameObject.SetActive(true);
-
     }
     private void Update()
     {

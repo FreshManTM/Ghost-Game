@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartButton()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void MenuButton()
@@ -85,6 +86,11 @@ public class GameManager : MonoBehaviour
     }
     public void LoadNextLevel()
     {
+
+        PlayerPrefs.SetInt("levelAt", SceneManager.GetActiveScene().buildIndex + 1);
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
     }
 }
