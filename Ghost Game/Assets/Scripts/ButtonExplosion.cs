@@ -28,7 +28,6 @@ public class ButtonExplosion : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) && explosion != null)
             {
-                //FindObjectOfType<GameManager>().buttonPressed = true;
 
                 StartCoroutine(ButtonPressed());
             }
@@ -52,11 +51,11 @@ public class ButtonExplosion : MonoBehaviour
     {
         Explosion old = explosion;
         explosion = null;
-        button.transform.position = new Vector3(button.transform.position.x - .1f, button.transform.position.y, button.transform.position.z);
+        button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y - .5f, button.transform.position.z);
         old.Explode();
         yield return new WaitForSeconds(.5f);
-        button.transform.position = new Vector3(button.transform.position.x + .1f, button.transform.position.y, button.transform.position.z);
-        yield return new WaitForSeconds(2.5f);
+        button.transform.position = new Vector3(button.transform.position.x + .1f, button.transform.position.y + .5f, button.transform.position.z);
+        yield return new WaitForSeconds(4.5f);
         Destroy(old.gameObject);
     }
 

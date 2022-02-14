@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c02cbce3804f34eb7d2afb58de7345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSound: {fileID: 0}
   pathHolder: {fileID: 7954882767562865968}
   spotLight: {fileID: 5269848398124359889}
   speed: 4
   waitTime: 0.5
   turnSpeed: 9
-  timeToSpotPlayer: 0.2
+  timeToSpotPlayer: 0.1
   viewDistance: 20
   viewMask:
     serializedVersion: 2

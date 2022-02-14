@@ -7,7 +7,6 @@ public class EnemyAI : MonoBehaviour
 {
     public static event System.Action OnEnemyHasSpottedPlayer;
 
-    [SerializeField] AudioSource walkSound;
     [SerializeField] Transform pathHolder;
     [SerializeField] Light spotLight;
 
@@ -38,14 +37,15 @@ public class EnemyAI : MonoBehaviour
         origSpotLightColor = spotLight.color;
 
         waypoints = new Vector3[pathHolder.childCount];
+
         for (int i = 0; i < waypoints.Length; i++)
         {
             waypoints[i] = pathHolder.GetChild(i).position;
-            waypoints[i] = new Vector3 (waypoints[i].x, transform.position.y, waypoints[i].z);
+            waypoints[i] = new Vector3(waypoints[i].x, transform.position.y, waypoints[i].z);
         }
 
         StartCoroutine(FollowPath());
-
+        
         GameManager.gm.BombExploded += OnBombExploded;
     }
     private void Update()
@@ -68,6 +68,7 @@ public class EnemyAI : MonoBehaviour
             if(OnEnemyHasSpottedPlayer != null)
             {
                 OnEnemyHasSpottedPlayer();
+
             }
         }
 
@@ -96,24 +97,25 @@ public class EnemyAI : MonoBehaviour
 
         while(true)
         {
+
             animator.SetBool("isRunning", true);
-            //walkSound.Play();
 
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, speed * Time.deltaTime);
             TurnFace(targetWaypoint);
-            if((transform.position - targetWaypoint).magnitude < .1f)
+            if ((transform.position - targetWaypoint).magnitude < .1f)
             {
 
                 targetWaypointIndex = (targetWaypointIndex + 1) % waypoints.Length;
                 targetWaypoint = waypoints[targetWaypointIndex];
-                
-                //walkSound.Stop();
+
 
                 animator.SetBool("isRunning", false);
                 yield return new WaitForSeconds(waitTime);
 
             }
             yield return null;
+            
+           
 
         }
     }
@@ -134,7 +136,6 @@ public class EnemyAI : MonoBehaviour
         
         while ((transform.position - lookTarget).magnitude > 1)
         {
-
             TurnFace(lookTarget);
             transform.position = Vector3.MoveTowards(transform.position, lookTarget, speed * Time.deltaTime);
             yield return null;
@@ -146,6 +147,7 @@ public class EnemyAI : MonoBehaviour
         lookTarget = origPosition;
         while ((transform.position - lookTarget).magnitude > 1)
         {
+            animator.SetBool("isRunning", true);
 
             TurnFace(lookTarget);
             transform.position = Vector3.MoveTowards(transform.position, lookTarget, speed * Time.deltaTime);
@@ -186,7 +188,7 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.forward * viewDistance);
 
         Color color = Color.grey;
-        color.a = .05f;
+        color.a = .1f;
         Gizmos.color = color;
         Gizmos.DrawSphere(transform.position,radiusSpotExp);
         

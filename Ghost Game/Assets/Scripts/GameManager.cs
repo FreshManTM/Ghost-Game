@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public bool inRangeOfDoor;
     bool paused;
     [SerializeField] GameObject canvasPause;
-    public GameObject canvasWin;
-    public GameObject canvasLose;
+    public CanvasGroup canvasWin;
+    public CanvasGroup canvasLose;
     public bool isDialog;
 
     public bool gameIsOver;
@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
     public event EventHandler BombExploded;
     public static GameManager gm;
 
+    [SerializeField] AudioSource spotSound;
+    [SerializeField] AudioSource winSound;
+
+    bool isFadingWin;
+    bool isFadingLose;
     void Start()
     {
         canvasPause.SetActive(false);
@@ -38,8 +43,25 @@ public class GameManager : MonoBehaviour
             PauseButton();
             canvasPause.SetActive(true);
         }
-
+        Fading();
     }
+
+    private void Fading()
+    {
+        if (isFadingWin)
+        {
+            canvasWin.alpha += Time.deltaTime * .5f;
+            if (canvasWin.alpha == 1)
+                isFadingWin = false;
+        }
+        if (isFadingLose)
+        {
+            canvasLose.alpha += Time.deltaTime * .5f;
+            if (canvasLose.alpha == 1)
+                isFadingLose = false;
+        }
+    }
+
     private void Awake()
     {
         gm = this;
@@ -50,15 +72,19 @@ public class GameManager : MonoBehaviour
     }
     void ShowGameWinUI()
     {
+        winSound.Play();
         OnGameOver(canvasWin);
+        isFadingWin = true;
     }
     void ShowGameLoseUI()
     {
+        spotSound.Play();
         OnGameOver(canvasLose);
+        isFadingLose = true;
     }
-    void OnGameOver(GameObject gameOverUI)
+    void OnGameOver(CanvasGroup gameOverUI)
     {
-        gameOverUI.SetActive(true);
+        gameOverUI.gameObject.SetActive(true);
         gameIsOver = true;
         EnemyAI.OnEnemyHasSpottedPlayer -= ShowGameLoseUI;
         FindObjectOfType<PlayerController>().OnReachedEndOfLevel -= ShowGameWinUI;

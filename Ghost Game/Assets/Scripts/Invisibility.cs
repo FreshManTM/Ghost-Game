@@ -33,7 +33,7 @@ public class Invisibility : MonoBehaviour
         timerInvisText.text = timerInvis.ToString("F1");
         textInvisCount.text = invisTimes.ToString();
 
-        if(SceneManager.GetActiveScene().buildIndex != 1)
+        if(SceneManager.GetActiveScene().buildIndex != 1 && !FindObjectOfType<GameManager>().gameIsOver)
             Invisible();
         
     }

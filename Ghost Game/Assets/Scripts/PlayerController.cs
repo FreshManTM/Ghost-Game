@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] bool isGrounded;
 
-    [Header("Transparensy")]
     
     float turnSoothVelocity;
     Vector3 moveDirection;
@@ -78,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     private void Disable()
     {
-        disabled = true;   
+        disabled = true;
     }
     void OnDestroy()
     {

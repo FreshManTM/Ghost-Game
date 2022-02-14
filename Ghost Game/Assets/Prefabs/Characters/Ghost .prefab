@@ -1251,8 +1251,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5889046199849278246}
   - component: {fileID: 6210641098576095274}
-  - component: {fileID: 6210641098576095252}
   - component: {fileID: 6210641098576095253}
+  - component: {fileID: 6210641098576095252}
   m_Layer: 7
   m_Name: 'Ghost '
   m_TagString: Player
@@ -1294,28 +1294,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6210641098576095252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6553239924660830620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128fa0471a083bd4eb9951ca723bb7db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerInvisText: {fileID: 0}
-  material: {fileID: 2100000, guid: 39851544d4f42e44cab24227f2c1f985, type: 2}
-  imageCooldown: {fileID: 0}
-  textCooldown: {fileID: 0}
-  timeInvisible: 3
-  timerInvis: 0
-  timerCooldown: 0
-  invisible: 0
-  inCooldown: 0
-  cooldownTime: 5
 --- !u!114 &6210641098576095253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,3 +1317,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  spotSound: {fileID: 0}
+--- !u!114 &6210641098576095252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6553239924660830620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128fa0471a083bd4eb9951ca723bb7db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInvisCount: {fileID: 0}
+  timerInvisText: {fileID: 0}
+  material: {fileID: 2100000, guid: 39851544d4f42e44cab24227f2c1f985, type: 2}
+  imageCooldown: {fileID: 0}
+  backImage: {fileID: 0}
+  mainMaterial: {fileID: 0}
+  invisMaterial: {fileID: 0}
+  invisTimes: 1
+  timeInvisible: 3
+  timerInvis: 0
+  inCooldown: 0
+  invisible: 0
