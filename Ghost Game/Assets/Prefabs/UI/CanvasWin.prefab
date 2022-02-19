@@ -394,13 +394,14 @@ GameObject:
   - component: {fileID: 2174505038513444462}
   - component: {fileID: 2174505038513444461}
   - component: {fileID: 2174505038513444460}
+  - component: {fileID: 1836187840393349877}
   m_Layer: 5
   m_Name: CanvasWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2174505038513444463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -486,6 +487,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &1836187840393349877
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174505038513444435}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2174505039338623005
 GameObject:
   m_ObjectHideFlags: 0

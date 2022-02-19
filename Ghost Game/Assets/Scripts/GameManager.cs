@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         inRangeOfDoor = false;
         EnemyAI.OnEnemyHasSpottedPlayer += ShowGameLoseUI;
         FindObjectOfType<PlayerController>().OnReachedEndOfLevel += ShowGameWinUI;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -72,6 +73,9 @@ public class GameManager : MonoBehaviour
     }
     void ShowGameWinUI()
     {
+        PlayerPrefs.SetInt("levelAt", SceneManager.GetActiveScene().buildIndex + 1);
+        Cursor.lockState = CursorLockMode.None;
+
         winSound.Play();
         OnGameOver(canvasWin);
         isFadingWin = true;
@@ -79,6 +83,8 @@ public class GameManager : MonoBehaviour
     void ShowGameLoseUI()
     {
         spotSound.Play();
+        Cursor.lockState = CursorLockMode.None;
+
         OnGameOver(canvasLose);
         isFadingLose = true;
     }
@@ -92,18 +98,21 @@ public class GameManager : MonoBehaviour
     }
     public void PauseButton()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         Time.timeScale = 0;
         paused = true;
     }
     public void ResumeButton()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         Time.timeScale = 1;
         paused = false;
     }
 
     public void RestartButton()
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void MenuButton()
@@ -111,12 +120,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     public void LoadNextLevel()
-    {
-
-        PlayerPrefs.SetInt("levelAt", SceneManager.GetActiveScene().buildIndex + 1);
-        
+    {  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-
     }
 }

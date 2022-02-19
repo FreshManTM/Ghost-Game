@@ -27,18 +27,27 @@ public class TeachingLevels : MonoBehaviour
     void Update()
     {
         Typing();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             continuePressed = true;
         }
         CameraSwap();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        SkipButton();
+    }
+
+    private void SkipButton()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             textPanel.SetActive(false);
             FindObjectOfType<GameManager>().isDialog = false;
+            cam2.Priority = 9;
+            if(cam3 != null)
+                cam3.Priority = 9;
 
         }
     }
+
     IEnumerator Type(string MyString)
     {
         endTyping = false;

@@ -1317,7 +1317,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
-  spotSound: {fileID: 0}
 --- !u!114 &6210641098576095252
 MonoBehaviour:
   m_ObjectHideFlags: 0
